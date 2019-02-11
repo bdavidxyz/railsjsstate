@@ -3,17 +3,16 @@ $("document").ready(function(){
   // Apply on JavaScript on the "Hint" page, not the welcome page
   if (window.location.href.indexOf("hint/index") > 0) {
 
-$(window).unload(function(){
-  console.log('Bye.');
-  localStorage.setItem('global_state_for', 
-    {
-        model: gon.model,
-        viewmodel:  window.main_store.getState(),
-    }
-  );
-});
-
-
+    $(window).unload(function(){
+      console.log('Bye.');
+      var where = $("body").attr("data-path");
+      localStorage.setItem('global_state_for_' + where, JSON.stringify(
+        {
+          model: gon.model,
+          viewmodel:  window.main_store.getState(),
+        }
+      ));
+    });
 
     var default_state = {
       active_tab: "2nd"
