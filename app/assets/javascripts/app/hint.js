@@ -8,7 +8,7 @@ $("document").ready(function(){
     };
 
     // REDUCER
-    var reducer = function(state, action) {  
+    var reducer = function(state, action) { 
       if (state === undefined) {
         return default_state;
       }
@@ -18,7 +18,7 @@ $("document").ready(function(){
         newState.active_tab = default_state.active_tab
       }
       else if (action.type === 'TAB_CLICKED') {
-        newState.active_tab = action.active_tab
+        newState.active_tab = action.with_slug
       }
       return newState;
     };
