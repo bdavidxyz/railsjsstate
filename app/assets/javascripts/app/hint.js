@@ -28,7 +28,11 @@ $("document").ready(function(){
 
     // SUBSCRIBER
     var subscriber = function() {
-      $('#text').text($("[data-slug='" + main_store.getState().active_tab + "']").attr("data-description"))
+      var slug = main_store.getState().active_tab;
+      var $elt = $("[data-slug='" + slug + "']");
+      $('#text').text($elt .attr("data-description"));
+
+
     }
 
     main_store.subscribe(subscriber);
