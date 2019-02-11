@@ -8,7 +8,7 @@ $("document").ready(function(){
       var where = $("body").attr("data-path");
       localStorage.setItem('global_state_for_' + where, JSON.stringify(
         {
-          model: gon.model,
+          model: gon.model_and_state["model"],
           state:  window.main_store.getState(),
         }
       ));
