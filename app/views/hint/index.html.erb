@@ -3,13 +3,13 @@
     <h1>Some hints from database.</h1>
   </center>
   <center>
-    <%= link_to "Back to welcome page", root_path %>
+    <%= link_to "← Back to welcome page", root_path %>
   </center>
 
 <article style="margin-top: 3rem">
   
     <% hints.each_with_index do |hint, index| %>
-      <span data-description="<%=hint.description%>" data-slug="<%=hint.slug%>">
+      <span data-description="<%=hint.description%>" data-slug="<%=hint.slug%>" class="clickable">
         <%=hint.name%>
       </span>
       <span>&nbsp;&nbsp;&nbsp;</span>
