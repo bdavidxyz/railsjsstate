@@ -1,8 +1,6 @@
 class HintController < ApplicationController
 
   def index
-    # previous_model = 
-    # current_model = 
     model = {
       hints: Hint.select(:name, :slug, :description)
     }

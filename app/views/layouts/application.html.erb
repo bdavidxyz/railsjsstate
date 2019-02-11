@@ -10,7 +10,7 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body data-path="">
+  <body data-path="<%= GetCurrentPath.new(request).call %>">
     <%= yield %>
   </body>
 </html>
