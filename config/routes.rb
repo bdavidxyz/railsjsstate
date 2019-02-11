@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'welcome/index'
   get 'hint/index'
-  put 'state/update'
+  post 'state/create'
   
   root 'welcome#index'
 end

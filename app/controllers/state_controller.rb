@@ -1,6 +1,6 @@
 class StateController < ApplicationController
 
-  def update
+  def create
     given_object = _params
     session[given_object["path"]] = given_object["model_and_state"]
   end

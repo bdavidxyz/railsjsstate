@@ -1,16 +1,17 @@
 $("document").ready(function(){
 
-  console.log(localStorage_has_key_starting_with("global_state_for_"));
 
   var key_val = localStorage_has_key_starting_with("global_state_for_");
+  console.log("key_val");
+  console.log(key_val);
 
   if (key_val) {
     var path = key_val.key.substring("global_state_for_".length);
     var model_and_state = JSON.parse(key_val.value);
     $.ajax({
-      type: "PUT",
+      type: "POST",
       dataType: "application/json",
-      url: "/state/update",
+      url: "/state/create",
       headers: {
        'X-CSRF-Token': document.querySelector("meta[name=csrf-token]").content
       },
