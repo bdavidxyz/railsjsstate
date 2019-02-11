@@ -1,9 +1,6 @@
 class HintViewObject < ViewObject
 
   def after_init(args)
-    p '- - - - - - - - - - - - - - args- - - - - - - - - - - - - - - -' 
-    pp args
-    p ''
     @hints = args["model"]["hints"]
     @active_tab_slug = args["state"]["active_tab"]
     @active_tab_slug = "1st" if @active_tab_slug == nil
@@ -28,10 +25,6 @@ class HintViewObject < ViewObject
 
   def displayed_text
     active_hint = @hints.find { |hint| hint["slug"] == @active_tab_slug  }
-    p '- - - - - - - - - - - - - - @hints- - - - - - - - - - - - - - - -' 
-    pp @active_tab_slug 
-    pp @hints
-    p ''
     active_hint["description"]
   end
 
