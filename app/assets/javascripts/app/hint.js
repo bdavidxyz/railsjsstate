@@ -6,9 +6,11 @@ $("document").ready(function(){
 $(window).unload(function(){
   console.log('Bye.');
   localStorage.setItem('global_state_for', 
-    model: gon.model,
-    viewmodel:  window.main_store.getState()
-    );
+    {
+        model: gon.model,
+        viewmodel:  window.main_store.getState(),
+    }
+  );
 });
 
 
