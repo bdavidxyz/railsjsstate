@@ -39,7 +39,7 @@ $("document").ready(function(){
 
       var slug = main_store.getState().active_tab;
       var $elt = $("[data-slug='" + slug + "']");
-      $('#text').text($elt .attr("data-description"));
+      $('#text').text(gon.model_and_state.model["hints"].find(function(e){return e.slug === slug})["description"]);
       $elt.addClass("bold");
 
     };

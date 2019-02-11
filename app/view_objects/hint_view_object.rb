@@ -18,10 +18,6 @@ class HintViewObject < ViewObject
     "clickable #{bolded}"
   end
 
-  def description_of(hint)
-    hint["description"]
-  end
-
   def slug_of(hint)
     hint["slug"]
   end
