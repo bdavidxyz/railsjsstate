@@ -1,9 +1,6 @@
 class HintViewObject < ViewObject
 
   def after_init(args)
-    # p '- - - - - - - - - - - - - - args- - - - - - - - - - - - - - - -' 
-    # pp args
-    # p ''
     @hints = args["model"]["hints"]
     @active_tab_slug = args["state"]["active_tab"]
   end
@@ -13,7 +10,7 @@ class HintViewObject < ViewObject
   end
 
   def class_of(hint)
-    bolded = is_active_tab?(hint) ? "bold" : ""
+    bolded = _is_active_tab?(hint) ? "bold" : ""
     "clickable #{bolded}"
   end
 
@@ -30,10 +27,11 @@ class HintViewObject < ViewObject
   end
 
   def displayed_text
-    "none"
+    active_hint = @hints.find { |hint| hint["slug"] == @active_tab_slug  }
+    active_hint["description"]
   end
 
-  def is_active_tab?(hint)
+  def _is_active_tab?(hint)
     slug_of(hint) == @active_tab_slug
   end
 
