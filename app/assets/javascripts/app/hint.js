@@ -30,7 +30,7 @@ $("document").ready(function(){
     };
 
     // STORE
-    window.main_store = Redux.createStore(reducer, gon.model_and_state.state);
+    var main_store = Redux.createStore(reducer, gon.model_and_state.state);
 
     // SUBSCRIBER
     var subscriber = function() {
