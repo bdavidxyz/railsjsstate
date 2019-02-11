@@ -32,7 +32,7 @@ $("document").ready(function(){
           given_object: {
             path: $("body").attr("data-path"),
             model_and_state: JSON.stringify({
-              model: gon.model,
+              model: gon.model_and_state["model"],
               state: newState
             })
           }
