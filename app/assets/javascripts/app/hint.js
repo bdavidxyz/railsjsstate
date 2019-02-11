@@ -3,57 +3,34 @@ $("document").ready(function(){
   // Apply on JavaScript on the "Hint" page, not the welcome page
   if (window.location.href.indexOf("hint/index") > 0) {
 
-    var default_state = {
-      active_tab: "1st"
-    };
 
     // REDUCER
     var reducer = function(state, action) { 
+      var defaultState = deep_copy_of(gon.model_and_state.state);
+
       if (state === undefined) {
-        return default_state;
+        console.log("undefined!!!")
+        return defaultState;
       }
       // Deep copy of previous state to avoid side-effects
-      var newState = JSON.parse(JSON.stringify(state));
+      var newState = deep_copy_of(state);
+
       if (action.type === 'INIT') {
-        newState.active_tab = default_state.active_tab
+        console.log("init!!!")
+        newState = defaultState;
       }
       else if (action.type === 'TAB_CLICKED') {
         newState.active_tab = action.with_slug
       }
 
-      $.ajax({
-        type: "POST",
-        dataType: "application/json",
-        url: "/state/create",
-        headers: {
-         'X-CSRF-Token': document.querySelector("meta[name=csrf-token]").content
-        },
-        data: {
-          given_object: {
-            path: $("body").attr("data-path"),
-            model_and_state: JSON.stringify({
-              model: gon.model_and_state["model"],
-              state: newState
-            })
-          }
-        },
-        success: function() {return false},
-        error: function() {return false},
-      });
-
-      // localStorage.setItem(
-      //   'global_state_for_' + $("body").attr("data-path"), 
-      //   JSON.stringify({
-      //     model: gon.model_and_state["model"],
-      //     state:  newState,
-      //   }
-      // ));
+      // BOOM ! save current state
+      post_new_state_to_server(newState);
 
       return newState;
     };
 
     // STORE
-    window.main_store = Redux.createStore(reducer, default_state);
+    window.main_store = Redux.createStore(reducer, gon.model_and_state.state);
 
     // SUBSCRIBER
     var subscriber = function() {
