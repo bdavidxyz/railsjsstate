@@ -4,10 +4,10 @@ hint_list = [
   ["third hint",   "This hint also exist in database, but which tab is active is nowhere in database."],
 ]
 
-existing_hints = hint.all.map(&:name)
+existing_hints = Hint.all.map(&:name)
 
 hint_list.each do |name_arg, description_arg|
   unless existing_hints && existing_hints.include?(name_arg)
-    hint.create!(name: name_arg, description: description_arg)
+    Hint.create!(name: name_arg, description: description_arg)
   end
 end
