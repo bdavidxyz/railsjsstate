@@ -7,9 +7,6 @@ $("document").ready(function(){
     // REDUCER
     var reducer = function(state, action) { 
 
-      if (state === undefined) {
-        return gon.model_and_state.state;
-      }
       // Deep copy of previous state to avoid side-effects
       var newState = deep_copy_of(state);
 
