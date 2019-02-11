@@ -1,7 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+hint_list = [
+  ["first hint",  "This tab actually exist in database"],
+  ["second hint",  "This one also exist in database. But there is one thing that do not belongs to database."],
+  ["third hint",   "This hint also exist in database, but which tab is active is nowhere in database."],
+]
+
+existing_hints = hint.all.map(&:name)
+
+hint_list.each do |name_arg, description_arg|
+  unless existing_hints && existing_hints.include?(name_arg)
+    hint.create!(name: name_arg, description: description_arg)
+  end
+end
