@@ -6,20 +6,14 @@ $("document").ready(function(){
 
     // REDUCER
     var reducer = function(state, action) { 
-      var defaultState = deep_copy_of(gon.model_and_state.state);
 
       if (state === undefined) {
-        console.log("undefined!!!")
-        return defaultState;
+        return gon.model_and_state.state;
       }
       // Deep copy of previous state to avoid side-effects
       var newState = deep_copy_of(state);
 
-      if (action.type === 'INIT') {
-        console.log("init!!!")
-        newState = defaultState;
-      }
-      else if (action.type === 'TAB_CLICKED') {
+      if (action.type === 'TAB_CLICKED') {
         newState.active_tab = action.with_slug
       }
 
