@@ -4,7 +4,7 @@ class HintController < ApplicationController
     # previous_model = 
     # current_model = 
     model = {
-      hints: Hint.all
+      hints: Hint.select(:name, :slug, :description)
     }
     hydrate_view(model)
   end
