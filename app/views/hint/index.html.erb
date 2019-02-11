@@ -2,5 +2,23 @@
   <center class="hero">
     <h1>Some hints from database.</h1>
   </center>
+  <center>
+    <%= link_to "Back to welcome page", root_path %>
+  </center>
+
+<article style="margin-top: 3rem">
   
+    <% hints.each_with_index do |hint, index| %>
+      <span data-description="<%=hint.description%>" id="hint-<%=hint.id%>">
+        <%=hint.name%>
+      </span>
+      <span>&nbsp;&nbsp;&nbsp;</span>
+    <% end %>
+
+    <div style="margin-top: 2rem" id="text">
+      Some text by default. Should be removed once JavaScript is active
+    </div>
+
+</article>
+
 </main>
