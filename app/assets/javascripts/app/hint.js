@@ -21,21 +21,20 @@ $("document").ready(function(){
     };
 
     // STORE
-    var main_store = Redux.createStore(reducer, gon.model_and_state.state);
+    window.main_store = Redux.createStore(reducer, gon.model_and_state.state);
 
     // SUBSCRIBER
-    var subscriber = function() {
-
+    var active_tab_watcher = Redux.watch(main_store.getState, 'active_tab')(function(newVal, oldVal, objectPath) {
+      console.log('%s changed from %s to %s', objectPath, oldVal, newVal)
       $(".clickable").removeClass("bold");
 
       var slug = main_store.getState().active_tab;
       var $elt = $("[data-slug='" + slug + "']");
       $('#text').text(gon.model_and_state.model["hints"].find(function(e){return e.slug === slug})["description"]);
       $elt.addClass("bold");
+    })
 
-    };
-
-    main_store.subscribe(subscriber);
+    main_store.subscribe(active_tab_watcher);
 
     // DISPATCHERS
     $(".clickable").click(function(e) {

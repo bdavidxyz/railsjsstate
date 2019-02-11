@@ -13,4 +13,5 @@
 //= require rails-ujs
 //= require jquery/jquery
 //= require redux/redux
+//= require redux/redux-watch
 //= require_tree ./app/.
