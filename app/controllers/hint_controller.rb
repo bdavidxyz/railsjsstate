@@ -1,9 +1,12 @@
 class HintController < ApplicationController
 
   def index
-    render locals: {
+    # previous_model = 
+    # current_model = 
+    model = {
       hints: Hint.all
     }
+    hydrate_view(model)
   end
 
   def before_unload

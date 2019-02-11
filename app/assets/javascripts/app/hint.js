@@ -3,6 +3,16 @@ $("document").ready(function(){
   // Apply on JavaScript on the "Hint" page, not the welcome page
   if (window.location.href.indexOf("hint/index") > 0) {
 
+$(window).unload(function(){
+  console.log('Bye.');
+  localStorage.setItem('global_state_for', 
+    model: gon.model,
+    viewmodel:  window.main_store.getState()
+    );
+});
+
+
+
     var default_state = {
       active_tab: "2nd"
     };
@@ -30,7 +40,7 @@ $("document").ready(function(){
     var subscriber = function() {
 
       $(".clickable").removeClass("bold");
-      
+
       var slug = main_store.getState().active_tab;
       var $elt = $("[data-slug='" + slug + "']");
       $('#text').text($elt .attr("data-description"));
