@@ -28,12 +28,15 @@ $("document").ready(function(){
 
     // SUBSCRIBER
     var subscriber = function() {
+
+      $(".clickable").removeClass("bold");
+      
       var slug = main_store.getState().active_tab;
       var $elt = $("[data-slug='" + slug + "']");
       $('#text').text($elt .attr("data-description"));
+      $elt.addClass("bold");
 
-
-    }
+    };
 
     main_store.subscribe(subscriber);
 

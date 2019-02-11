@@ -931,3 +931,6 @@ tfoot td {
   cursor: pointer;
   color: #007bff;
 }
+.bold {
+  font-weight: bold;
+}
