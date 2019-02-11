@@ -7,7 +7,7 @@ class HintsIndex
 
   def call
     model_and_state = _current
-    if _current["model"] == _previous["model"]
+    if model_and_state["model"] == _previous["model"]
       model_and_state = _previous
     end
     return model_and_state

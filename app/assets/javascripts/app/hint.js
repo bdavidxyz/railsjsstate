@@ -3,19 +3,8 @@ $("document").ready(function(){
   // Apply on JavaScript on the "Hint" page, not the welcome page
   if (window.location.href.indexOf("hint/index") > 0) {
 
-    $(window).unload(function(){
-      console.log('Bye.');
-      var where = $("body").attr("data-path");
-      localStorage.setItem('global_state_for_' + where, JSON.stringify(
-        {
-          model: gon.model_and_state["model"],
-          state:  window.main_store.getState(),
-        }
-      ));
-    });
-
     var default_state = {
-      active_tab: "2nd"
+      active_tab: "1st"
     };
 
     // REDUCER
@@ -31,6 +20,15 @@ $("document").ready(function(){
       else if (action.type === 'TAB_CLICKED') {
         newState.active_tab = action.with_slug
       }
+
+      localStorage.setItem(
+        'global_state_for_' + $("body").attr("data-path"), 
+        JSON.stringify({
+          model: gon.model_and_state["model"],
+          state:  newState,
+        }
+      ));
+
       return newState;
     };
 
