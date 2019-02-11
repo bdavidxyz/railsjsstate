@@ -9,7 +9,7 @@
 <article style="margin-top: 3rem">
   
     <% hints.each_with_index do |hint, index| %>
-      <span data-description="<%=hint.description%>" id="hint-<%=hint.id%>">
+      <span data-description="<%=hint.description%>" data-slug="<%=hint.slug%>">
         <%=hint.name%>
       </span>
       <span>&nbsp;&nbsp;&nbsp;</span>

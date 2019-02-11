@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2017_04_24_090908) do
   enable_extension "plpgsql"
 
   create_table "hints", force: :cascade do |t|
+    t.string "slug"
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
