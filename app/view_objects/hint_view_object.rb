@@ -13,7 +13,7 @@ class HintViewObject < ViewObject
   end
 
   def class_of(hint)
-    bolded = (slug_of(hint) == @active_tab_slug) ? "bold" : ""
+    bolded = is_active_tab?(hint) ? "bold" : ""
     "clickable #{bolded}"
   end
 
@@ -31,6 +31,10 @@ class HintViewObject < ViewObject
 
   def displayed_text
     "none"
+  end
+
+  def is_active_tab?(hint)
+    slug_of(hint) == @active_tab_slug
   end
 
 end
