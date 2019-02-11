@@ -21,7 +21,7 @@ $("document").ready(function(){
         }
       },
       success: function() {
-
+        localStorage.removeItem(key_val.key);
       },
       error: function() {return false},
     });
