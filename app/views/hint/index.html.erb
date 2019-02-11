@@ -9,18 +9,18 @@
 
 <article style="margin-top: 3rem">
   
-    <% hints.each_with_index do |hint, index| %>
+    <% v.hints.each_with_index do |hint, index| %>
       <span 
-        data-description="<%=hint['description']%>" 
-        data-slug="<%=hint['slug']%>" 
-        class="clickable">
-          <%=hint['name']%>
+        data-description="<%=v.description_of(hint)%>" 
+        data-slug="<%=v.slug_of(hint)%>" 
+        class="<%=v.class_of(hint)%>">
+          <%=v.name_of(hint)%>
       </span>
       <span>&nbsp;&nbsp;&nbsp;</span>
     <% end %>
 
     <div style="margin-top: 2rem" id="text">
-      !!! Some text by default. Should be removed once JavaScript is active
+      <%= v.displayed_text %>
     </div>
 
 </article>

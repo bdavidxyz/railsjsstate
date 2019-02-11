@@ -7,7 +7,13 @@ class HintController < ApplicationController
     model = {
       hints: Hint.select(:name, :slug, :description).to_a.map{|e|e.attributes.compact!}
     }
-    hydrate_view(model)
+    state = {
+      "active_tab" => "1st"
+    }
+    hydrate_view({
+      model: model,
+      state: state
+    })
   end
 
 end
