@@ -1,9 +1,9 @@
 class HintViewObject < ViewObject
 
   def after_init(args)
-    p '- - - - - - - - - - - - - - args- - - - - - - - - - - - - - - -' 
-    pp args
-    p ''
+    # p '- - - - - - - - - - - - - - args- - - - - - - - - - - - - - - -' 
+    # pp args
+    # p ''
     @hints = args["model"]["hints"]
     @active_tab_slug = args["state"]["active_tab"]
   end

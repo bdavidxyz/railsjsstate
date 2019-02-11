@@ -7,6 +7,12 @@ class HintsIndex
 
   def call
     model_and_state = _current
+    # p '- - - - - - - - - - - - - - _currentmodel- - - - - - - - - - - - - - - -' 
+    # pp _current["model"]
+    # p ''
+    p '- - - - - - - - - - - - - - _previousmodel- - - - - - - - - - - - - - - -' 
+    pp _previous["model"]
+    p ''
     if _current["model"] == _previous["model"]
       model_and_state = _previous
     end
@@ -16,7 +22,13 @@ class HintsIndex
 
   def _previous
     current_path = GetCurrentPath.new(@request).call
-    @session[current_path] ? @session[current_path]["model"] : {}
+    # p '- - - - - - - - - - - - - - current_path- - - - - - - - - - - - - - - -' 
+    # pp current_path
+    # p ''
+    # p '- - - - - - - - - - - - - - @session[current_path]- - - - - - - - - - - - - - - -' 
+    # pp @session[current_path]
+    # p ''
+    @session[current_path] ? @session[current_path] : {}
   end
 
   def _current
