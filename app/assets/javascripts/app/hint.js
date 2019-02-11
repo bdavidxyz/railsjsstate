@@ -9,7 +9,7 @@ $("document").ready(function(){
       localStorage.setItem('global_state_for_' + where, JSON.stringify(
         {
           model: gon.model,
-          viewmodel:  window.main_store.getState(),
+          state:  window.main_store.getState(),
         }
       ));
     });

@@ -1,3 +1,4 @@
+<%- v = view_object(:hint_view_object, local_assigns) %>
 <main>  
   <center class="hero">
     <h1>Some hints from database.</h1>
@@ -9,8 +10,11 @@
 <article style="margin-top: 3rem">
   
     <% hints.each_with_index do |hint, index| %>
-      <span data-description="<%=hint['description']%>" data-slug="<%=hint['slug']%>" class="clickable">
-        <%=hint['name']%>
+      <span 
+        data-description="<%=hint['description']%>" 
+        data-slug="<%=hint['slug']%>" 
+        class="clickable">
+          <%=hint['name']%>
       </span>
       <span>&nbsp;&nbsp;&nbsp;</span>
     <% end %>
