@@ -2,7 +2,10 @@ class StateController < ApplicationController
 
   def create
     given_object = _params
-    session[given_object["path"]] = given_object["model_and_state"]
+    # p '- - - - - - - - - - - - - - _params- - - - - - - - - - - - - - - -' 
+    # ap _params
+    # p ''
+    session[given_object["path"]] = YAML.load(given_object["model_and_state"])
   end
 
   def _params

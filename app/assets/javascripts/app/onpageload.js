@@ -6,8 +6,6 @@ $("document").ready(function(){
   console.log(key_val);
 
   if (key_val) {
-    var path = key_val.key.substring("global_state_for_".length);
-    var model_and_state = JSON.parse(key_val.value);
     $.ajax({
       type: "POST",
       dataType: "application/json",
@@ -17,8 +15,8 @@ $("document").ready(function(){
       },
       data: {
         given_object: {
-          path: path,
-          model_and_state: model_and_state
+          path: key_val.key.substring("global_state_for_".length),
+          model_and_state: key_val.value
         }
       },
       success: function() {
