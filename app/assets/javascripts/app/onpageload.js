@@ -1,10 +1,12 @@
 $("document").ready(function(){
-  console.log(localStorage_has_key_starting_with("global_state_for_"))
+
+  console.log(localStorage_has_key_starting_with("global_state_for_"));
+
   var key_val = localStorage_has_key_starting_with("global_state_for_");
-  var path = key_val.key.substring("global_state_for_".length);
-  var model_and_state = JSON.parse(key_val.val);
+
   if (key_val) {
-    var path = key_val.substring(5, 2);
+    var path = key_val.key.substring("global_state_for_".length);
+    var model_and_state = JSON.parse(key_val.value);
     $.ajax({
       type: "PUT",
       dataType: "application/json",
